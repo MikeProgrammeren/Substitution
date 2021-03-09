@@ -31,8 +31,9 @@ char* Decrypt(char* CipherText, char* Key){
     for(int i = 0, n = strlen(CipherText); i <= n; i++){
         for(int j = 0, m = strlen(Key); j < m; j++){
             if(IsLowerCase(CipherText[i])){
-                if(CipherText[i] == Key[j])
+                if(CipherText[i] == Key[j]){ 
                     DecipheredText[i] = 97 + j;
+                    break;
             }
             else if(IsUpperCase(CipherText[i])){
                 if(CipherText[i] == Key[j])
