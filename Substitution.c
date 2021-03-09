@@ -17,7 +17,7 @@ char* Decrypt(char* CipherText, char* Key);
 int main(void){
     char PlainText[] = "abC.";
     char* Key = "bcdefghijklmnopqrstuvwxyza";
-   //a
+   
     char* CipherText = Encrypt(PlainText, Key);
     char* DecipheredText = Decrypt(CipherText, Key);
  
