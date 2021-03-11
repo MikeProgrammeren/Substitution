@@ -13,8 +13,12 @@ char* ConvertStringToLower(char* String);
 void PrintString(char* String);
 char* GetString(void);
 char* Decrypt(char* CipherText, char* Key);
+bool ContainsLetterMoreThanOnce(char* String)
 
-int main(void){
+int main( int argc, char *argv[] ){
+    
+    
+    
     char PlainText[] = "Hoi computer ik hou van jou <3.";
     char* Key = "qw#rtyuiop%sdfghjklzxcvbnm";
    
@@ -23,7 +27,36 @@ int main(void){
  
     PrintString(CipherText);
     PrintString(DecipheredText);
+    free(CipherText);
+    free(DecipheredText);
+
 }
+
+bool ValidateCommandLineArguments(int argc, char* argv){
+    int ErrorCount = 0;
+    int KeyLength = strlen(argv);
+
+    
+    if (argc > 1){
+            printf("Function requires one command line argument. You entered: %i\n", argc); 
+            ErrorCount++; 
+        }     
+    if (KeyLength != 26 ){
+            printf("Key has to be 26 letters. You entered: %i\n", KeyLength);
+            ErrorCount++; 
+        }    
+  //  if( )
+
+   
+
+
+}
+//If your program is executed without any command-line arguments or with more than one command-line argument
+//, your program should print an error message of your choice (with printf) 
+//and return from main a value of 1 (which tends to signify an error) immediately.
+
+//If the key is invalid (as by not containing 26 characters, containing any character that is not an alphabetic character, or not ..//containing each letter exactly once), your program should print an error message of your choice (with printf) and return from //..//main a value of 1 immediately.
+
 
 char* Decrypt(char* CipherText, char* Key){
     char * DecipheredText =  malloc(strlen(CipherText) + 1); 
@@ -50,7 +83,7 @@ char* Decrypt(char* CipherText, char* Key){
 }
 
 char* Encrypt(char* PlainText, char* Key){
-    char * CipherText = calloc(strlen(PlainText) + 1, sizeof(char));
+    char * CipherText = malloc(strlen(PlainText) + 1);
     
     for(int i = 0, n = strlen(PlainText); i <= n; i++){
         if(IsLowerCase(PlainText[i])){
@@ -73,6 +106,20 @@ char* Encrypt(char* PlainText, char* Key){
             CipherText[i] = PlainText[i]; 
     } 
     return CipherText;      
+}
+
+bool ContainsLetterMoreThanOnce(char* String){
+    int LetterCount = 0;
+
+    for(int i = 0, n = strlen(String); i <= String; i++){
+        for(int j = 0,  k = 97; j < 27; k++){
+            if(String[i] == k){
+                LetterCount++;
+            }
+        }
+    if(LetterCount > 1)
+        return false;
+    }
 }
 
 bool IsUpperCase(char c){

@@ -1,2 +1,1 @@
-
-    char * DecipheredText =  malloc(strlen(CipherText) + 1); 
+ DecipheredText[i] = CipherText[i];
