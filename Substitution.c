@@ -15,8 +15,8 @@ char* GetString(void);
 char* Decrypt(char* CipherText, char* Key);
 
 int main(void){
-    char PlainText[] = "abC.";
-    char* Key = "bcdefghijklmnopqrstuvwxyza";
+    char PlainText[] = "Hoi computer ik hou van jou <3.";
+    char* Key = "qw#rtyuiop%sdfghjklzxcvbnm";
    
     char* CipherText = Encrypt(PlainText, Key);
     char* DecipheredText = Decrypt(CipherText, Key);
@@ -34,17 +34,19 @@ char* Decrypt(char* CipherText, char* Key){
                 if(CipherText[i] == Key[j]){ 
                     DecipheredText[i] = 97 + j;
                     break;
-            }
+                }    
+            } 
             else if(IsUpperCase(CipherText[i])){
-                if(CipherText[i] == Key[j])
-                    DecipheredText[i] = 65 + j;
+                if(CipherText[i] == Key[j] - 32){
+                    DecipheredText[i] = 65 + j;  
+                    break;
+                }    
             }
-
-        }  
-
+            else 
+                DecipheredText[i] = CipherText[i];
+        } 
     }
     return DecipheredText;
-
 }
 
 char* Encrypt(char* PlainText, char* Key){
