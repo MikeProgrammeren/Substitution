@@ -1,1 +1,1 @@
- DecipheredText[i] = CipherText[i];
+qwertyuiopasdfghjklzxcvbnm
